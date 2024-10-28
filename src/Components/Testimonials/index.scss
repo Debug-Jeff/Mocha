@@ -1,0 +1,12 @@
+
+  // Components/Testimonials/index.scss
+  // Styles for testimonials grid
+  .testimonials {
+    // Responsive grid similar to projects
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+  }

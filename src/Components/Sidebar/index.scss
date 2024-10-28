@@ -1,0 +1,63 @@
+  // Components/Sidebar/index.scss
+  // Styles for the navigation sidebar
+  
+  .Nav-bar {
+    // Fixed width for sidebar
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: #00283d;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-right: 1px solid #6b6767;
+    backdrop-filter: blur(10px);
+    
+    .sidebar{
+      margin-top: -60px;
+    }
+    .logo-name{
+      .name{
+          display: flex;
+          align-items: center;
+      }
+      img{
+        margin-right: 10px;
+        height: 50px;
+      }
+    }
+    // Navigation list styles
+    ul {
+      list-style: none;
+      padding: 0;
+      border-top: 1px solid #6b6767;
+      border-bottom: 1px solid #6b6767;
+      
+      // Navigation item styles
+      li {
+        margin: 1rem 0;
+        margin-bottom: 40px;
+        
+        // Link styles
+        a {
+          font-size: 20px;
+          font-weight: 600;
+          color: #5dcfc5;
+          text-decoration: none;
+          i {
+            font-size: 20px;
+            font-weight: 500;
+            margin-right: 10px;
+          }
+          
+          // Hover effect
+          &:hover {
+            color: #db5978;
+          }
+        }
+      }
+    }
+  }
+  

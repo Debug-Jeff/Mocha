@@ -1,0 +1,13 @@
+  // Components/Events/index.scss
+  // Styles for the events listing
+  .events {
+    // Vertical stack of event items
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  }
+  

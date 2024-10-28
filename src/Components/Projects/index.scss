@@ -1,0 +1,13 @@
+    // Components/Projects/index.scss
+  // Styles for the projects grid
+  .projects {
+    // Responsive grid layout for project cards
+    .projects-grid {
+      display: grid;
+      // Responsive columns that adjust based on viewport width
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+  }
+  
