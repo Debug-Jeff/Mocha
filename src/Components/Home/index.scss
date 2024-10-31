@@ -1,14 +1,237 @@
-  // Components/Home/index.scss
-  // Styles for the home page
-  .home {
-    // Limit content width and center
-    max-width: 800px;
-    margin: 0 auto;
-    
-    // Header styles
-    h1 {
-      color: #333;
-      margin-bottom: 2rem;
+.home {
+  position: relative;
+  max-width: 1200px;
+  margin: 100px auto 0;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  gap: 4rem;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .home-content {
+    flex: 1;
+    max-width: 600px;
+
+    .writing {
+      h1 {
+        font-size: 3.5rem;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        
+        .highlight {
+          background: linear-gradient(45deg, #ff00cc, #333399);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 2.5rem;
+        }
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+
+        @media (max-width: 768px) {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .home-btn {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+
+      @media (max-width: 576px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        min-width: 180px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        clip-path: polygon(0 10%, 100% 0%, 100% 90%, 0% 100%);
+        
+        span {
+          transform: translateY(-1px);
+        }
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        &.btn-primary {
+          background: linear-gradient(45deg, #ff00cc, #333399);
+          color: white;
+          border: none;
+        }
+
+        &.btn-secondary {
+          background: transparent;
+          color: white;
+          border: 2px solid rgba(255, 255, 255, 0.2);
+
+          &:hover {
+            border-color: #ff00cc;
+          }
+        }
+      }
+    }
+
+    .home-social {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+
+      @media (max-width: 992px) {
+        justify-content: center;
+      }
+
+      .home-social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: linear-gradient(45deg, #ff00cc, #333399);
+          transform: translateY(-3px);
+        }
+
+        i {
+          font-size: 1.2rem;
+        }
+      }
     }
   }
-  
+
+  .home-img {
+    flex: 1;
+    position: relative;
+    max-width: 500px;
+
+    .image-container {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.05);
+        }
+
+        .box-img {
+          transform: translateX(10px);
+        }
+      }
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+    }
+
+    .box-img {
+      background: linear-gradient(45deg, #ff00cc, #333399);
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      span {
+        color: white;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      i {
+        color: white;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+// Animation classes
+.animate__fadeIn {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate__fadeInRight {
+  animation: fadeInRight 1s ease-out;
+}
+
+.animate__delay-1s {
+  animation-delay: 0.2s;
+}
+
+.animate__delay-2s {
+  animation-delay: 0.4s;
+}
+
+.animate__delay-3s {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

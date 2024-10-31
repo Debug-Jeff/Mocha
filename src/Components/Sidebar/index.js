@@ -1,34 +1,74 @@
-// Components/Sidebar/index.js
-// Navigation sidebar component
-// Contains links to all main pages of the application
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Logo from '../../Assets/Blue phoenix esport mascot logo.jpeg';
 import './index.scss';
-import Logo from'../../Assets/Blue phoenix esport mascot logo.jpeg'
 
 const Sidebar = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const location = useLocation();
+
+  const menuItems = [
+    { path: '/', icon: 'bx bx-home', label: 'Home' },
+    { path: '/about', icon: 'bx bx-user-circle', label: 'About' },
+    { path: '/projects', icon: 'bx bx-code-alt', label: 'Projects' },
+    { path: '/events', icon: 'bx bx-calendar-event', label: 'Events' },
+    { path: '/testimonials', icon: 'bx bx-conversation', label: 'Testimonials' },
+    { path: '/contact', icon: 'bx bxs-contact', label: 'Contact' }
+  ];
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const threshold = 50;
+      if (e.clientX <= threshold) {
+        setIsExpanded(true);
+      }
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => document.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const handleMouseLeave = () => {
+    setIsExpanded(false);
+  };
+
   return (
-    <div className='Nav-bar'>
-      <div className='logo-name'>
-        <div className="name">
-          <img src={Logo}></img>
-          <h2>MOCHA!</h2>
+    <div 
+      className={`nav-bar ${isExpanded ? 'expanded' : ''}`}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="hover-trigger" />
+      
+      <div className="sidebar-content">
+        <div className="logo-name">
+          <div className="name">
+            <img src={Logo} alt="Mocha Logo" />
+            <h2>Mocha</h2>
+          </div>
+          <span className="subtitle">Coffee website</span>
         </div>
-        <span>Coffee website</span>
+
+        <nav className="sidebar">
+          <ul>
+            {menuItems.map((item) => (
+              <li key={item.path}>
+                <Link 
+                  to={item.path} 
+                  className={location.pathname === item.path ? 'active' : ''}
+                >
+                  <i className={item.icon}></i>
+                  <span className="link-text">{item.label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="sidebar-footer">
+          <span className="version">v1.0.0</span>
+        </div>
       </div>
-      <nav className="sidebar">
-        {/* Navigation links using React Router's Link component */}
-        <ul>
-          <li><Link to="/"><i class='bx bx-home'></i>Home</Link></li>
-          <li><Link to="/about"><i class='bx bx-user-circle'></i>About</Link></li>
-          <li><Link to="/projects"><i class='bx bx-code-alt' ></i>Projects</Link></li>
-          <li><Link to="/events"><i class='bx bx-calendar-event' ></i>Events</Link></li>
-          <li><Link to="/testimonials"><i class='bx bx-conversation' ></i>Testimonials</Link></li>
-          <li><Link to="/contact"><i class='bx bxs-contact'></i>Contact</Link></li>
-        </ul>
-      </nav>
     </div>
-    
   );
 };
 
