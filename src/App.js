@@ -11,7 +11,7 @@ import Events from './Components/Events';
 import Testimonials from './Components/Testimonials';
 import './App.css';
 
-// Root component that wraps the entire application
+// Root component that wraps thhe entire application
 // Sets up routing and layout structure
 function App() {
   return (
